@@ -421,6 +421,7 @@ const (
 	SelectLockNone SelectLockType = iota
 	SelectLockForUpdate
 	SelectLockInShareMode
+	SelectLockForUpdateNoWait
 )
 
 // String implements fmt.Stringer.
