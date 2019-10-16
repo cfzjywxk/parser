@@ -433,6 +433,8 @@ func (slt SelectLockType) String() string {
 		return "for update"
 	case SelectLockInShareMode:
 		return "in share mode"
+	case SelectLockForUpdateNoWait:
+		return "for update nowait"
 	}
 	return "unsupported select lock type"
 }
@@ -882,7 +884,7 @@ func (n *SelectStmt) Restore(ctx *RestoreCtx) error {
 	case SelectLockInShareMode:
 		ctx.WriteKeyWord(" LOCK ")
 		ctx.WriteKeyWord(n.LockTp.String())
-	case SelectLockForUpdate:
+	case SelectLockForUpdate, SelectLockForUpdateNoWait:
 		ctx.WritePlain(" ")
 		ctx.WriteKeyWord(n.LockTp.String())
 	}
